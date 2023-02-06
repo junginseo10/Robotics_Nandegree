@@ -13,7 +13,7 @@ ros::Publisher motor_command_publisher;
 bool handle_drive_request(ball_chaser::DriveToTarget::Request& req,
     ball_chaser::DriveToTarget::Response& res)
 {
-    ros::Rate loop_rate(2);
+
     ROS_INFO("DriveToTarget received - l_x:%1.2f, a_z:%1.2f", (float)req.linear_x, (float)req.angular_z);
    
 	// Create a motor_command object of type geometry_msgs::Twist
@@ -23,7 +23,7 @@ bool handle_drive_request(ball_chaser::DriveToTarget::Request& req,
 	motor_command.angular.z = req.angular_z;
 	// Publish angles to drive the robot
 	motor_command_publisher.publish(motor_command);
-	loop_rate.sleep();
+
 	
 
     
